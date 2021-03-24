@@ -17,3 +17,4 @@ fi
 # Run the scripts that needs to be run on the project
 npm install
 ng lint --project=${1}
+ng test --project=${1}
