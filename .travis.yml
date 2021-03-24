@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - 14.13.1
+
+notifications:
+  email: false
+
+branches:
+  only:
+    - main
+
+install: skip
+
+matrix:
+  include:
+    - env: TARGET=projects/csd
+    - env: TARGET=projects/librarian
+
+script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $TARGET; then echo "$TARGET is being built" && cd $TARGET && npm install && npm run test; else echo "$TARGET is NOT being built"; fi
