@@ -9,6 +9,9 @@ branches:
   only:
     - main
 
+before_install:
+  - chmod +x build-condition.sh
+
 install: skip
 
 matrix:
