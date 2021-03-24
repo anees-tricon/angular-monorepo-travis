@@ -13,12 +13,11 @@ before_install:
   - chmod +x .travis/build-condition.sh
   - chmod +x .travis/build.sh
 
-install:
-  - npm install
+install: skip
 
 matrix:
   include:
-    - env: TARGET=projects/csd
-    - env: TARGET=projects/librarian
+    - env: TARGET=projects/csd PROJECT=csd
+    - env: TARGET=projects/librarian PROJECT=librarian
 
-script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $TARGET; then echo "$TARGET is being built" && .travis/build.sh $TARGET; else echo "$TARGET is NOT being built"; fi
+script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $TARGET; then echo "$TARGET is being built" && .travis/build.sh $PROJECT; else echo "$TARGET is NOT being built"; fi
