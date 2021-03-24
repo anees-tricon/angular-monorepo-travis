@@ -10,7 +10,7 @@ branches:
     - main
 
 before_install:
-  - chmod +x build-condition.sh
+  - chmod +x .travis/build-condition.sh
 
 install: skip
 
